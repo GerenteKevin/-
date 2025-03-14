@@ -16,6 +16,7 @@
         /* Tab样式 */
         .tabs {
             display: flex;
+            flex-wrap: wrap;
             background-color: #333;
             color: white;
             padding: 10px;
@@ -24,14 +25,20 @@
         }
 
         .tabs div {
-            margin: 0 20px;
+            margin: 5px;
             padding: 10px 20px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
         }
 
         .tabs div:hover {
             background-color: #555;
+        }
+
+        .tabs div i {
+            margin-right: 8px;
         }
 
         .active {
@@ -61,88 +68,62 @@
             color: #555;
             line-height: 1.6;
         }
+
+        /* 响应式设计 */
+        @media (max-width: 600px) {
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tabs div {
+                width: 100%;
+                text-align: center;
+            }
+        }
     </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
     <div class="tabs">
-        <div class="tab" id="tab1" onclick="showTab('content1')">推荐榜</div>
-        <div class="tab" id="tab2" onclick="showTab('content2')">推广员与玩家</div>
-        <div class="tab" id="tab3" onclick="showTab('content3')">1vs1提款</div>
-        <div class="tab" id="tab4" onclick="showTab('content4')">手机号绑定</div>
-        <div class="tab" id="tab5" onclick="showTab('content5')">战队创建</div>
-        <div class="tab" id="tab6" onclick="showTab('content6')">质检疑问</div>
+        <div class="tab" id="tab1" onclick="showTab('content1')"><i class="fas fa-trophy"></i> 推荐榜</div>
+        <div class="tab" id="tab2" onclick="showTab('content2')"><i class="fas fa-users"></i> 推广员与玩家</div>
+        <div class="tab" id="tab3" onclick="showTab('content3')"><i class="fas fa-cogs"></i> 1vs1提款</div>
+        <div class="tab" id="tab4" onclick="showTab('content4')"><i class="fas fa-mobile-alt"></i> 手机号绑定</div>
+        <div class="tab" id="tab5" onclick="showTab('content5')"><i class="fas fa-users-cog"></i> 战队创建</div>
+        <div class="tab" id="tab6" onclick="showTab('content6')"><i class="fas fa-question-circle"></i> 质检疑问</div>
     </div>
 
     <div class="tab-content" id="content1">
         <h2>推荐榜如何运作</h2>
-    <p>推荐榜是一个每两天更新的动态排名，每周有三次更新：</p>
-    <ul>
-        <li><strong>周一：</strong>发布周榜</li>
-        <li><strong>周三：</strong>更新</li>
-        <li><strong>周五：</strong>更新</li>
-    </ul>
+        <p>推荐榜是一个每两天更新的动态排名，每周有三次更新：</p>
+        <ul>
+            <li><strong>周一：</strong>发布周榜</li>
+            <li><strong>周三：</strong>更新</li>
+            <li><strong>周五：</strong>更新</li>
+        </ul>
 
-    <h2>💡 如何进入推荐榜：</h2>
-    <ul>
-        <li><span class="highlight">✅</span> 邀请至少 20 名新玩家，完成后下周上榜。</li>
-        <li><span class="highlight">✅</span> 在 Dindin 销售额变化排名中进入前100（这是根据销售额变化，而不是固定销售额）。</li>
-    </ul>
+        <h2>💡 如何进入推荐榜：</h2>
+        <ul>
+            <li><span class="highlight">✅</span> 邀请至少 20 名新玩家，完成后下周上榜。</li>
+            <li><span class="highlight">✅</span> 在 Dindin 销售额变化排名中进入前100（这是根据销售额变化，而不是固定销售额）。</li>
+        </ul>
 
-    <h2>❌ 被移出推荐榜的情况：</h2>
-    <ul>
-        <li><span class="important">🚫</span> 玩家转化率低于 5%。</li>
-    </ul>
+        <h2>❌ 被移出推荐榜的情况：</h2>
+        <ul>
+            <li><span class="important">🚫</span> 玩家转化率低于 5%。</li>
+        </ul>
 
-    <h2>📈 如何维持在推荐榜？</h2>
-    <ul>
-        <li><span class="info">✔</span> 在榜单上时：保持玩家转化率在 5% 以上，避免被移除。</li>
-        <li><span class="info">✔</span> 如果不在榜单上：可以通过邀请新玩家和增加销售额变化，下周重新进入榜单。</li>
-    </ul>
-
-
-
+        <h2>📈 如何维持在推荐榜？</h2>
+        <ul>
+            <li><span class="info">✔</span> 在榜单上时：保持玩家转化率在 5% 以上，避免被移除。</li>
+            <li><span class="info">✔</span> 如果不在榜单上：可以通过邀请新玩家和增加销售额变化，下周重新进入榜单。</li>
+        </ul>
     </div>
 
     <div class="tab-content" id="content2">
-         <h1>推广员与玩家的服务关系和返利分配</h1>
-    
-    <h2>1. 第一上线与第二上线</h2>
-    <p>第一个服务玩家的推广员为第一上线，获得70%返利；第二个服务玩家的为第二上线，获得30%返利。如果只有第一上线，所有返利归第一上线。</p>
-    
-    <h2>2. 上线变更</h2>
-    <p>如果第一上线在48小时内未服务玩家，之后其他推广员服务则成为新的第一上线。第二上线会在其他推广员服务时变更。</p>
-    
-    <h2>3. 服务有效期</h2>
-    <p>如果没有其他推广员服务玩家，推广员与玩家的关系保持5天有效期，第一上线为5天，第二上线为2天。</p>
-    
-    <h2>4. 服务保护期</h2>
-    <p>第一上线在48小时内不可变更，第二上线没有保护期。</p>
-    
-    <h2>5. 服务关系产生的条件</h2>
-    <p>若玩家首次与推广员产生关系，满足一定条件即可；非首次服务时，需满足返利与发放/回收数量条件。</p>
-
-    <h2>1.2.1 判断推广员和玩家之间是否建立服务关系的条件</h2>
-    <p>分为两种情况：</p>
-    
-    <h3>第一组条件：</h3>
-    <ul>
-        <li>玩家最近7天内的返利大于10。</li>
-        <li>推广员单次发放的DD（返利单位）数量大于5，或者单次回收的DD数量大于等于5。</li>
-    </ul>
-
-    <h3>第二组条件：</h3>
-    <ul>
-        <li>玩家最近7天内的返利少于10。</li>
-        <li>推广员发放的DD数量大于1，或者回收的DD数量大于5。</li>
-    </ul>
-
-    <p>只要满足以上两组条件中的<strong>任意一组</strong>，就可以建立推广员与玩家的服务关系；如果两组条件都不满足，则不能建立服务关系。</p>
-
-    <h2>补充说明：</h2>
-    <p>如果玩家频繁与不同的推广员交易，这会导致服务返利由某个推广员获得，因替换利润受益者需要时间。</p>
-
-        
+        <h2>推广员与玩家的服务关系和返利分配</h2>
+        <p>第一上线与第二上线：第一个服务玩家的推广员为第一上线，获得70%返利；第二个服务玩家的为第二上线，获得30%返利。</p>
     </div>
 
     <div class="tab-content" id="content3">

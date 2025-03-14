@@ -1,0 +1,16 @@
+function openTab(tabId) {
+    // 隐藏所有标签内容
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(content => {
+        content.style.display = 'none';
+    });
+
+    // 显示点击的标签内容
+    const tabContent = document.getElementById(tabId);
+    tabContent.style.display = 'block';
+}
+
+// 默认打开第一个标签
+document.addEventListener('DOMContentLoaded', () => {
+    openTab('tab1');
+});

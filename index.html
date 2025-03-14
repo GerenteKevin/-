@@ -1,34 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>知识库</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 页面样式 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Tab样式 */
+        .tabs {
+            display: flex;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            justify-content: center;
+        }
+
+        .tabs div {
+            margin: 0 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .tabs div:hover {
+            background-color: #555;
+        }
+
+        .active {
+            background-color: #007bff;
+        }
+
+        /* 内容区域 */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        /* 显示内容的样式 */
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 标题样式 */
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="tabs">
-            <button class="tab" onclick="openTab('tab1')">Tab 1</button>
-            <button class="tab" onclick="openTab('tab2')">Tab 2</button>
-            <button class="tab" onclick="openTab('tab3')">Tab 3</button>
-        </div>
-        <div class="content">
-            <div id="tab1" class="tab-content">
-                <h2>Tab 1 内容</h2>
-                <p>这里是 Tab 1 的知识库内容。</p>
-            </div>
-            <div id="tab2" class="tab-content">
-                <h2>Tab 2 内容</h2>
-                <p>这里是 Tab 2 的知识库内容。</p>
-            </div>
-            <div id="tab3" class="tab-content">
-                <h2>Tab 3 内容</h2>
-                <p>这里是 Tab 3 的知识库内容。</p>
-            </div>
-        </div>
+
+    <div class="tabs">
+        <div class="tab" id="tab1" onclick="showTab('content1')">推荐榜</div>
+        <div class="tab" id="tab2" onclick="showTab('content2')">推广员与玩家</div>
+        <div class="tab" id="tab3" onclick="showTab('content3')">1vs1提款</div>
+        <div class="tab" id="tab4" onclick="showTab('content4')">手机号绑定</div>
+        <div class="tab" id="tab5" onclick="showTab('content5')">战队创建</div>
+        <div class="tab" id="tab6" onclick="showTab('content6')">质检疑问</div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="tab-content" id="content1">
+        <h2>推荐榜如何运作</h2>
+        <p>推荐榜是一个每两天更新的动态排名，每周有三次更新：...</p>
+    </div>
+
+    <div class="tab-content" id="content2">
+        <h2>推广员与玩家的服务关系和返利分配</h2>
+        <p>第一上线与第二上线：第一个服务玩家的推广员为第一上线，获得70%返利；第二个服务玩家的为第二上线，获得30%返利。</p>
+    </div>
+
+    <div class="tab-content" id="content3">
+        <h2>如何在扑克牌桌1vs1提款时避免被收取服务费</h2>
+        <p>最好的办法是，推广员先行动的时候，不要加注，最多call，然后玩家直接allin，然后弃牌。</p>
+    </div>
+
+    <div class="tab-content" id="content4">
+        <h2>如何帮助玩家绑定手机号</h2>
+        <p>正确格式：❌71XXXXXXX ✔5571XXXXXXXXX。提醒：别忘了添加区号。</p>
+    </div>
+
+    <div class="tab-content" id="content5">
+        <h2>创建战队</h2>
+        <p>你的旧战队不会被删除，并且仍然可以继续获得战队奖励。排行榜上的战队将被新创建的战队替换。</p>
+    </div>
+
+    <div class="tab-content" id="content6">
+        <h2>质检疑问</h2>
+        <p>Se você quiser fazer a inspeção, me avise e eu agendarei para a próxima segunda-feira.</p>
+    </div>
+
+    <script>
+        // 设置Tab切换功能
+        function showTab(contentId) {
+            // 隐藏所有tab内容
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // 移除所有tab的active类
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // 显示当前tab内容
+            document.getElementById(contentId).classList.add('active');
+
+            // 设置当前tab为active
+            const activeTab = document.querySelector(`[onclick="showTab('${contentId}')"]`);
+            activeTab.classList.add('active');
+        }
+
+        // 默认显示第一个tab
+        showTab('content1');
+    </script>
+
 </body>
 </html>
